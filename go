@@ -5,7 +5,7 @@ import os
 
 if __name__ == '__main__':
     path = os.path.dirname(os.path.realpath(__file__))
-    dirs = [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
+    dirs = [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d)) and not d.startswith('.')]
     count = 0
     question = {}
     for dir in dirs:
