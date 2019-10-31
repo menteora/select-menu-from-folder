@@ -13,12 +13,13 @@ if __name__ == '__main__':
         filespath = os.path.join(path, dir)
         files = [f for f in os.listdir(filespath) if os.path.isfile(os.path.join(filespath, f))]
         for file in files:
-            print(HTML("<b fg='red'>{}</b> - {}".format(count,file)))
-            question[count] = os.path.join(filespath, file)
+            print(HTML("<b fg='red'>{}</b> - {}".format(file.rsplit(' | ',1)[0],file.rsplit(' | ',1)[1])))
+            # print(HTML("<b fg='red'>{}</b> - {}".format(count,file)))
+            question[file.rsplit(' | ',1)[0]] = os.path.join(filespath, file)
             count += 1
     
     #print(question)
     answer = prompt(HTML("<b fg='green'>Choose:</b> "))
-    executable = question[int(answer)]
+    executable = question[answer]
     print('running... {}'.format(executable))
     os.system('"{}"'.format(executable))
